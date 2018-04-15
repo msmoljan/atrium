@@ -9,16 +9,17 @@ import ch.tutteli.atrium.domain.creating.iterable.contains.searchbehaviours.InOr
 
 /**
  * Finishes the specification of the sophisticated `contains` assertion where the [Iterable] needs to contain only the
- * [expected] object.
+ * [expected] value.
  *
- * Delegate to `objekte(expected)`.
+ * Delegates to `werte(expected)`.
  *
- * @param expected The object which is expected to be contained within the [Iterable].
+ * @param expected The value which is expected to be contained within the [Iterable].
  *
  * @return The [AssertionPlant] for which the assertion was built to support a fluent API.
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
-fun <E, T : Iterable<E>> IterableContains.Builder<E, T, InOrderOnlySearchBehaviour>.wert(expected: E): AssertionPlant<T>
+@Suppress("NOTHING_TO_INLINE")
+inline fun <E, T : Iterable<E>> IterableContains.Builder<E, T, InOrderOnlySearchBehaviour>.wert(expected: E): AssertionPlant<T>
     = werte(expected)
 
 @Deprecated("Use the extension fun `wert` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("checkerBuilder.wert(expected)"))
@@ -71,7 +72,8 @@ fun <E, T : Iterable<E>> objekte(checkerBuilder: IterableContainsBuilder<E, T, I
  * @return The [AssertionPlant] for which the assertion was built to support a fluent API.
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
-fun <E : Any, T : Iterable<E>> IterableContains.Builder<E, T, InOrderOnlySearchBehaviour>.eintrag(assertionCreator: Assert<E>.() -> Unit): AssertionPlant<T>
+@Suppress("NOTHING_TO_INLINE")
+inline fun <E : Any, T : Iterable<E>> IterableContains.Builder<E, T, InOrderOnlySearchBehaviour>.eintrag(noinline assertionCreator: Assert<E>.() -> Unit): AssertionPlant<T>
     = eintraege(assertionCreator)
 
 @Deprecated("Use the extension fun `eintrag` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("checkerBuilder.eintrag(assertionCreator)"))
@@ -120,7 +122,8 @@ fun <E : Any, T : Iterable<E>> eintraege(
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
 @JvmName("eintrag?")
-fun <E : Any, T : Iterable<E?>> IterableContains.Builder<E?, T, InOrderOnlySearchBehaviour>.eintrag(assertionCreator: (Assert<E>.() -> Unit)?): AssertionPlant<T>
+@Suppress("NOTHING_TO_INLINE")
+inline fun <E : Any, T : Iterable<E?>> IterableContains.Builder<E?, T, InOrderOnlySearchBehaviour>.eintrag(noinline assertionCreator: (Assert<E>.() -> Unit)?): AssertionPlant<T>
     = eintraege(assertionCreator)
 
 @Deprecated("Use the extension fun `eintrag` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("checkerBuilder.eintrag(assertionCreator)"))

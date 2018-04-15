@@ -11,15 +11,16 @@ import ch.tutteli.atrium.domain.creating.iterable.contains.searchbehaviours.InAn
  * Finishes the specification of the sophisticated `contains` assertion where the [Iterable] needs to contain only the
  * [expected] value.
  *
- * Delegates to `the Objects(expected)`.
+ * Delegates to `the Values(expected)`.
  *
  * @param expected The value which is expected to be contained within the [Iterable].
  *
  * @return The [AssertionPlant] for which the assertion was built to support a fluent API.
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
-infix fun <E, T : Iterable<E>> IterableContains.Builder<E, T, InAnyOrderOnlySearchBehaviour>.value(expected: E): AssertionPlant<T>
-    = this the Objects(expected)
+@Suppress("NOTHING_TO_INLINE")
+inline infix fun <E, T : Iterable<E>> IterableContains.Builder<E, T, InAnyOrderOnlySearchBehaviour>.value(expected: E): AssertionPlant<T>
+    = this the Values(expected)
 
 @Deprecated("Use the extension fun `value` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("builder value expected"))
 fun <E, T : Iterable<E>> value(builder: IterableContainsBuilder<E, T, InAnyOrderOnlySearchBehaviour>, expected: E): AssertionPlant<T>
@@ -29,8 +30,6 @@ fun <E, T : Iterable<E>> value(builder: IterableContainsBuilder<E, T, InAnyOrder
 /**
  * Finishes the specification of the sophisticated `contains` assertion where the expected [values]
  * need to be contained in [Iterable] where it does not matter in which order.
- *
- * Delegates to `the Objects(values)`.
  *
  * @param values The values which are expected to be contained within the [Iterable].
  *
@@ -73,7 +72,8 @@ fun <E, T : Iterable<E>> the(builder: IterableContainsBuilder<E, T, InAnyOrderOn
  * @return The [AssertionPlant] for which the assertion was built to support a fluent API.
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
-infix fun <E : Any, T : Iterable<E>> IterableContains.Builder<E, T, InAnyOrderOnlySearchBehaviour>.entry(assertionCreator: Assert<E>.() -> Unit): AssertionPlant<T>
+@Suppress("NOTHING_TO_INLINE")
+inline infix fun <E : Any, T : Iterable<E>> IterableContains.Builder<E, T, InAnyOrderOnlySearchBehaviour>.entry(noinline assertionCreator: Assert<E>.() -> Unit): AssertionPlant<T>
     = this the Entries(assertionCreator)
 
 @Deprecated("Use the extension fun `entry` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("builder entry assertionCreator"))
@@ -119,7 +119,8 @@ fun <E : Any, T : Iterable<E>> the(builder: IterableContainsBuilder<E, T, InAnyO
  * @throws AssertionError Might throw an [AssertionError] if the assertion made is not correct.
  */
 @JvmName("entry?")
-infix fun <E : Any, T : Iterable<E?>> IterableContains.Builder<E?, T, InAnyOrderOnlySearchBehaviour>.entry(assertionCreator: (Assert<E>.() -> Unit)?): AssertionPlant<T>
+@Suppress("NOTHING_TO_INLINE")
+inline infix fun <E : Any, T : Iterable<E?>> IterableContains.Builder<E?, T, InAnyOrderOnlySearchBehaviour>.entry(noinline assertionCreator: (Assert<E>.() -> Unit)?): AssertionPlant<T>
     = this the Entries(assertionCreator)
 
 @Deprecated("Use the extension fun `entry` instead. This fun is only here to retain binary compatibility, will be removed with 1.0.0", ReplaceWith("builder entry assertionCreator"))

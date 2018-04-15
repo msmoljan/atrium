@@ -16,6 +16,7 @@ class Entries<in T : Any, out A : ((Assert<T>) -> Unit)?>(val assertionCreator: 
 /**
  * Method object to express `vararg T` in the infix-api.
  */
+//TODO remove with 1.0.0
 class Objects<out T>(val expected: T, vararg val otherExpected: T) {
     constructor(values: Values<T>) : this(values.expected, *values.otherExpected)
 }
